@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+
+void rec(int level,int k,int left,vector<vector<int>> &all_comb,vector<int> &cur_comb,vector<int> v){
+    if(level==k){
+        all_comb.push_back(cur_comb);
+        return;
+    }
+    for(int i=left;i<(int)v.size();i++){
+        cur_comb.push_back(v[i]);
+        rec(level+1,k,i+1,all_comb,cur_comb,v);
+        cur_comb.pop_back();
+    }
+}
+
+vector<vector<int>> combine(int A, int B) {
+    vector<int> v;
+    for(int i=1;i<=A;i++){
+        v.push_back(i);
+    }
+    vector<vector<int>> all_comb;
+    vector<int> cur_comb;
+    rec(0,B,0,all_comb,cur_comb,v);
+    return all_comb;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>GENERATECOMBINATIONS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

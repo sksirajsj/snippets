@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+vector<string> subString(string s, ll n)
+{
+    vector<string> ans;
+    for (ll i = 0; i < n; i++){
+        for (ll len = 1; len <= n - i; len++){
+            ans.pb(s.substr(i, len));
+        }
+    }
+    return ans;    
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SUBSTRINGS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	 <scope>source.c++</scope>
+</snippet>

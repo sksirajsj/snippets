@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+ll countSubArraySumDivbyK(vector<ll> v)
+{
+    //Here K = n//
+    map<ll,ll> mp;
+    ll pref_sum_mod = 0,n = v.size(),ans=0;
+    mp[0] = 1;
+    for(ll i=0;i<n;i++)
+    {
+        pref_sum_mod+=v[i];
+        pref_sum_mod%=n;
+        if(pref_sum_mod<0)
+            pref_sum_mod+=n;
+        ans+=mp[pref_sum_mod];
+        mp[pref_sum_mod]++;
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>COUNTSUBARRAYSDIVbyK</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope> 
+</snippet>

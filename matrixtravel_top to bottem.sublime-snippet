@@ -1,0 +1,67 @@
+<snippet>
+	<content><![CDATA[
+ll n;
+string s;
+vector<vector<ll>> vis(n,vector<ll>(n,0));
+
+bool check(ll x,ll y){
+    if((x>=0 and x<n) and (y>=0 and y<n) and vis[x][y]==0)
+        return true;
+    return false;
+}
+
+
+
+void rec(ll x,ll y){
+    vis[x][y] = 1;
+    if(x==n-1 and y==n-1){
+        cout<<s<<"\n";
+        vis[x][y] = 0;
+        return;
+    }
+
+    if(check(x+1,y)){
+        s+='D';
+        rec(x+1,y);
+        s.pop_back();
+    }
+
+    if(check(x,y-1)){
+        s+='L';
+        rec(x,y-1);
+        s.pop_back();
+    }
+
+    if(check(x,y+1)){
+        s+='R';
+        rec(x,y+1);
+        s.pop_back();
+    }
+
+    if(check(x-1,y)){
+        s+='U';
+        rec(x-1,y);
+        s.pop_back();
+    }
+
+    vis[x][y] = 0;
+}
+void solve()
+{
+    ll m,a,b,c,x,y,z;
+    ll ans=0,val=0,cnt=0;
+    cin>>n;
+    vis.resize(n);
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<n;j++){
+            vis[i].pb(0);
+        }
+    }
+    rec(0,0);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>REACHFROM(0,0)to(n,n)</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

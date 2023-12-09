@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> g;
+vector<ll> vis;
+
+//vis array tells which component a node is present.
+
+void dfs(ll node,ll cmp){
+    vis[node] = cmp;
+    for(auto neigh:g[node]){
+        if(!vis[neigh]){
+            dfs(node,cmp);
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>DFS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	 <scope>source.c++</scope>
+</snippet>

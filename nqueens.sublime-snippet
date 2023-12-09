@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+ll n,ans=0;
+vector<ll> queens;
+vector<string> board;
+bool check(ll row,ll col){
+    if(board[row][col]=='*'){
+        return false;
+    }
+    for(ll prow = 0;prow<row;prow++){
+        ll pcol = queens[prow];
+        if(pcol==col or abs(prow-row)==abs(pcol-col)){
+            return false;
+        }
+    }
+    return true;
+}
+void recursive(ll level){
+    if(level==n){
+        ans++;
+        return;
+    }
+    for(ll col =0;col<n;col++){
+        if(check(level,col)){
+            queens.pb(col);
+            recursive(level+1);
+            queens.pop_back();
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>NQUEENS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

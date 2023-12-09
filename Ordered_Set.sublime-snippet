@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[  
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace __gnu_pbds; 
+
+template <typename num_t>
+using ordered_set = tree<num_t, null_type, less<num_t>, rb_tree_tag, tree_order_statistics_node_update>;
+
+
+
+/*
+Ordered_Set
+ find_by_order(x) -> gives iterator to xth smallest element in set(counting from 0)
+ order_of_key(x) -> gives number of element < x
+
+ 1) To use as Multiset,change less to less_equal.[upperbound ,lowerbound works oppositely
+ find_by_order() and order_of_key() works same..OR U CAN USE PAIR TRICK
+
+ //Copied
+ 2)First of all, for sure we need to set the comparison operator to " less_equal <data_type> " 
+ to allow occurrences, after that insertion will work fine, but the function erase 
+ will do nothing ever.
+
+ I noticed that using the comparison operator " less_equal <data_type> " 
+ makes the two functions " s.lower_bound(value) , s.upper_bound(value) " exchange their functions
+ for any value, depending on that to erase one occurrence of some value from the set 
+ we can write " s.erase(s.upper_bound(value)) ", just that simple, it will work efficiently.
+ Copied//
+
+ 2)A trick,to find number of elements > x 
+ create ordered_set of negative elements , order_of_key(-x) works .
+ Because : 
+        2 3 4 5
+        number of elements > 2 are 3 
+        negate it...
+        -2 -3 -4 -5
+        number of elements < (-2) are 3
+
+        so order_of_key(-2) works(given u create a set of neg elements)
+        and its answer is equivalnet to number of elements greater >2
+
+*/
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ORDERED_SET</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

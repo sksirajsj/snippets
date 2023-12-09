@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[
+string fractionToDecimal(int n, int d) {
+    string ans;
+    ans+=to_string(n/d);
+    int val;
+    int rem = n%d;
+    val = n/d;
+    if(rem!=0){
+        ans+='.';
+    }
+    else{
+        return ans;
+    }
+    map<int,int> mp;
+  
+    while(rem!=0 and mp.find(rem)==mp.end()){
+        //storing the position of remainder so we can find this this easily when rem repeats.
+        mp[rem] = ans.size();
+        rem = rem*10;
+        val = rem/d;
+        rem = rem%d;
+        ans+=to_string(val);
+    }
+    val = mp[rem];
+    if(rem==0){
+        return ans;
+    }
+    else{
+        ans = ans.substr(0,val)+'('+ans.substr(val)+')';
+        return ans;
+    }
+    // Code here
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>FRACTIONTODECIMAL</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

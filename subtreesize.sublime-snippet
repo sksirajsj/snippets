@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> sz(100010);
+
+void dfs(ll node,ll par){
+    //if leaf what's the answer.
+    sz[node] = 1;
+    for(auto neigh:g[node]){
+        if(neigh!=par){
+            dfs(neigh,node);
+            sz[node]+=sz[neigh];
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SUBTREESIZE</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

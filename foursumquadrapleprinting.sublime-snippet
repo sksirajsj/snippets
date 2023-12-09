@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<int>> fourSum(vector<int>& nums,int target) 
+{
+    int n = nums.size();
+    vector<vector<int>> v;
+       if(n<4)
+           return v;
+    set<vector<int>> se;
+    map<int,vector<pair<int,int>>> mp;
+    mp[nums[0]+nums[1]] = {{0,1}};
+    for(int i = 2;i<n;i++)
+    {
+        for(int j = i+1;j<n;j++)
+        {
+            if(mp.find(target-nums[i]-nums[j])!=mp.end())
+            {
+                vector<pair<int,int>> p11 = mp[target-nums[i]-nums[j]];
+                for(int k=0;k<p11.size();k++)
+                {
+                    pair<int,int> p1 = p11[k];
+                    vector<int> v11 = {nums[p1.first],nums[p1.second],nums[j],nums[i]};
+                    sort(v11.begin(),v11.end());
+                    se.insert(v11);
+                }
+                
+            }
+        }
+        for(int j=0;j<i;j++)
+        {
+            int val = nums[j]+nums[i];
+            if(mp.find(val)!=mp.end())
+            {
+                mp[val].push_back({j,i});
+            }
+            else
+            {
+                mp[val] = {{j,i}};
+            }
+        }
+    }
+
+    for(auto i:se)
+        v.push_back(i);
+    return v;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>FOURSUMQUADRAPLEPRINTING</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

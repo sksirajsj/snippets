@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+vector<pair<ll,ll>> MergeIntervals(vector<pair<ll,ll>> v)
+{
+    ll n = v.size();
+    vector<pair<ll,ll>> v1;
+    sort(v.begin(),v.end());
+    ll st = v[0].first;
+    ll en = v[0].second;
+    for(ll i=1;i<n;i++)
+    {
+        if(en>=v[i].first)
+        {
+            en = max(en,v[i].second);
+        }
+        else
+        {
+            v1.pb({st,en});
+            st = v[i].first;
+            en = v[i].second;
+        }
+    }
+    v1.pb({st,en});
+    return v1;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>MERGEINTERVALS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

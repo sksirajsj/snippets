@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+//Next greater 
+void next_greater(vector<ll> v){
+    ll n = v.size();
+    vector<ll> left(n),right(n);
+    stack<ll> st;
+    st.push(-1);
+    for(ll i=0;i<n;i++){
+        while(!st.empty() and st.top()!=-1 and v[st.top()]<=v[i])
+            st.pop();
+        left[i] = st.top();
+        st.push(i);
+    }
+    while(!st.empty()){
+        st.pop();
+    }
+    st.push(n+1);
+    for(ll i=n-1;i>=0;i--){
+        while(!st.empty() and st.top()!=(n+1) and v[st.top()]<=v[i])
+            st.pop();
+        right[i] = st.top();
+        st.push(i);
+    }
+    debug(left)
+    debug(right)
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>NEXTGREATER_GOOD</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

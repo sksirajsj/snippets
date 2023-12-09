@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+bool checkPalindrome(string s)
+{
+	ll i=0,j=s.size()-1;
+	while(i<=j)
+	{
+		if(s[i++]!=s[j--])
+			return false;
+	}
+	return true;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>CHECKPALINDROME</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

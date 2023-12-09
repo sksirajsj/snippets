@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[
+ll freq[1000010];
+ll cntDis=0;
+
+
+ll countdistinctatmostK(ll k,vector<ll> v){
+    ll head = -1,tail = 0,ans = 0,n = v.size();
+
+    while(tail<n){
+        while((head+1)<n and ((cntDis<k) or (cntDis<=k and freq[v[head+1]]>0))){
+            head++;
+            if(freq[v[head]]==0){
+                cntDis++;
+            }
+            freq[v[head]]++;
+        }
+        
+        ans+=(head-tail+1);
+
+        if(head>=tail){
+            freq[v[tail]]--;
+            if(freq[v[tail]]==0){
+                cntDis--;
+            }
+            tail++;
+        }else{
+            tail++;
+            head = tail-1;
+        }
+    }
+
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>TWOPOINTER_COUNTSUBWITHATMOST_KDISELEMENTS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope> 
+</snippet>

@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+ll n;
+vector<ll> v;
+bool check1(ll i,ll x)
+{
+    return v[i]<=x;
+}
+ll binarySearchAscending(ll lo,ll hi,ll x)
+{
+    ll ans = -1,mid;
+    while(lo<=hi)
+    {
+        mid = (lo+hi)/2;
+        if(check1(mid,x))
+        {
+            ans = mid;
+            lo = mid+1;
+        }
+        else
+        {
+            hi = mid-1;
+        }
+    }
+    if(ans== -1 or v[ans]!=x)
+        return -1;
+    return ans;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BINARYSEARCHASCENDING</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

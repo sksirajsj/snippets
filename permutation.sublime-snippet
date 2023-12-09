@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+ll n;
+vector<ll> cur_perm;
+map<ll,ll> mp;
+//fill the map in main
+vector<vector<ll>> all_perm;
+
+void rec(ll level){
+    if(level==n){
+        all_perm.pb(cur_perm);
+        return;
+    }
+
+    for(auto v:mp){
+        if(v.ss!=0){
+            mp[v.ff]--;
+            cur_perm.pb(v.ff);
+            rec(level+1);
+            cur_perm.pop_back();
+            mp[v.ff]++;
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>PERMUTATIONS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope> 
+</snippet>

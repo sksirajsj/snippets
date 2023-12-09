@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+bool check(long long int x,long long int n){
+    return x*x<=n;
+}
+long long int sqrt1(long long int A) {
+    long long int lo = 0,hi = 1000000;
+    long long int ans=0,mid=0;
+    if(A==0)return 0;
+    while(lo<=hi){
+        mid = (lo+hi)/2;
+        if(check(mid,A)){
+            ans = mid;
+            lo = mid+1;
+        }
+        else{
+            hi = mid-1;
+        }
+    }
+    
+    return (int)ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SQRTOFN,BS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

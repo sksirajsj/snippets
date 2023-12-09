@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+void insertionSort(vector<ll> &v){
+    for(ll i=0;i<size(v);i++){
+        ll j = i;
+        while(j>0 and v[j]<v[j-1]){
+            swap(v[j],v[j-1]);
+            j--;
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>INSERTIONSORT</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

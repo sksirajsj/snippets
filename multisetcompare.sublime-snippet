@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+struct comp
+{
+    bool operator() (const pair<ll,ll> p1,const pair<ll,ll> p2)const
+    {
+        return (p1.ff*p1.ff + p1.ss*p1.ss) > (p2.ff*p2.ff+p2.ss*p2.ss);
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>MULTISETCOMPARATOR</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

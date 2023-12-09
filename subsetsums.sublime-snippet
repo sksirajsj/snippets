@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> subsetsums(vector<ll> v){
+    vector<ll> subVals;
+    ll n = v.size();
+    for(ll mask=0;mask<(1<<n);mask++){
+        ll sum =0;
+        for(ll j=0;j<n;j++){
+            if((mask>>j)&1){
+                sum+=v[j];
+            }
+        }
+        subVals.push_back(sum);
+    }
+    sort(all(subVals));
+    return subVals;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SUBSETSUMS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

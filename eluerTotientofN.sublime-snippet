@@ -1,0 +1,46 @@
+<snippet>
+	<content><![CDATA[
+//n = p1^k1*p2^k2*...so on
+//use the idea of primefactorization
+//phi(p^k) = p^k - p^(k-1)//this idea is used to find phi(n)
+ll eluerTotientValofN(ll n)
+{
+    ll ans = n;
+    for(ll i = 2;i*i <= n;i++)
+    {
+        if(n%i==0)
+        {
+            while(n%i==0)
+                n/=i;
+            ans -= (ans/i);
+        }
+        
+    }
+    if(n>1)
+        ans -= (ans/n);
+    return ans;
+}
+
+//Totient values upto N
+vector<ll> totient(siz+1);
+void eulertotient()
+{
+    for(ll i = 0;i <= siz;i++)
+        totient[i] = i;
+    for(ll i = 2;i <= siz;i++)
+    {
+        if(totient[i] == i)
+        {
+            for(ll j = i;j <= siz;j += i)
+            {
+                totient[j] -= totient[j]/i;
+            }
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>EULERTOTIENTVALUES</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

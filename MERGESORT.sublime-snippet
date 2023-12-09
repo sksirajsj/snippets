@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[
+ll inv_cnt=0;
+vector<ll> merge(vector<ll> a,vector<ll> b){
+    vector<ll> v(a.size()+b.size(),0);
+    ll i=0,j=0,k=0;
+    while(i<a.size() and j<b.size()){
+        if(a[i]<=b[j]){
+            v[k++] = a[i++];
+        }else{
+            inv_cnt += (a.size()-i);
+            v[k++] = b[j++];
+        }
+    }
+    while(i<a.size()){
+        v[k++] = a[i++];
+    }
+    while(j<b.size()){
+        v[k++] = b[j++];
+    }
+    return v;
+}
+
+vector<ll> mergeSort(vector<ll> v){
+    vector<ll> a,b;
+    if(v.size()<2)return v;
+    for(ll i=0;i<(v.size()/2);i++){
+        a.pb(v[i]);
+    }
+    for(ll i=(v.size()/2);i<v.size();i++){
+        b.pb(v[i]);
+    }
+    a = mergeSort(a);
+    b = mergeSort(b);
+    return merge(a,b);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>MERGESORT</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+vector<pair<int,int>> cycles;
+vector<int> vis,par;
+
+//0->not visited
+//1->visited,dfs in progress for this node
+//2->visited and exited
+void dfs(vector<vector<int>> &g,int node){
+    vis[node] = 1;
+    for(auto ne:g[node]){
+        if(vis[ne]==0){
+            par[ne] = node;
+            dfs(g,ne);
+        }else if(vis[ne]==1){
+            //ne->cycle start
+            //node->cycle end
+            cycles.push_back({ne,node});
+        }
+    }
+    vis[node] = 2;
+}
+
+int findcylen(int u,int v){
+    int ans = 1;
+    for(int i=v;i!=u;i=par[i]){
+        ans++;
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>CYCLESDIRECTEDGRAPH</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

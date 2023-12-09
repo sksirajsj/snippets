@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+ll countdischarinsubstring(string s){
+    ll n,m,a,b,c,x,y,z;
+    ll ans=0,val=0,cnt=0;
+    n = s.size();
+    map<char,vector<ll>> mp;
+    for(ll i=0;i<n;i++){
+        mp[s[i]].pb(i);
+    }
+
+    ll tot = (n*(n+1))/2;
+    
+    for(auto i:mp){
+        val=0;
+        vector<ll> v = i.ss;
+
+        for(ll j=0;j+1<(ll)v.size();j++){
+            x = v[j+1]-v[j]-1;
+            val+=(((x)*(x+1))/2);
+        }
+        x = v[0];
+        val+=(((x)*(x+1))/2);
+        x = n-v[v.size()-1]-1;
+        val+=(((x)*(x+1))/2);
+        ans+=(tot-val);
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>COUNTDISCHARINSUBSTR</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

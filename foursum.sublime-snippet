@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+bool foursum(vector<ll> v,ll sum)
+{
+    ll n = v.size();
+    map<ll,pair<ll,ll>> mp;
+    mp[v[0]+v[1]] = {0,1};
+    for(ll i=2;i<n;i++)
+    {
+        for(ll j=i+1;j<n;j++)
+        {
+            if(mp.find(sum-(v[i]+v[j]))!=mp.end())
+                return true;
+        }
+        for(ll j=0;j<i;j++)
+            mp[v[j]+v[i]] = {j,i};
+    }
+    return false;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>FOURSUM</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> g;
+vector<ll> dep;
+
+void bfs(ll node){
+    queue<ll> q;
+    q.push(node);
+    dep[node] = 0;
+    while(!q.empty()){
+        auto v = q.front();
+        q.pop();
+        for(auto neigh:g[v]){
+            if(dep[neigh]>(dep[v]+1)){
+                dep[neigh]=dep[v]+1;
+                q.push(neigh);
+            }
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BFS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

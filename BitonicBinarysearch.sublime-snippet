@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[
+ll n;
+vector<ll> v;
+bool check(ll i)
+{
+    if(i==0)return 1;
+    return v[i]>v[i-1];
+}
+
+ll bitonic_binarySearch(ll lo,ll hi)
+{
+    ll ans = -1,mid;
+    while(lo<=hi)
+    {
+        mid = (lo+hi)/2;
+        if(check(mid))
+        {
+            ans = mid;
+            lo = mid+1;
+        }
+        else
+        {
+            hi = mid -1;
+        }
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BITONICBINARYSEARCH</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

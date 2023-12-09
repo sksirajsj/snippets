@@ -1,0 +1,41 @@
+<snippet>
+	<content><![CDATA[
+vector<pair<ll,ll>> v;
+vector<ll> vis,parent;
+vector<vector<ll>> g;
+ multiset<ll> ms;
+
+void dfs(ll node,ll par){
+    vis[node] = 1;
+    parent[node] = par;
+    for(auto ne:g[node]){
+        if(ne==par)continue;
+        if(vis[ne]){
+            if((ms.find(ne)==ms.end()) and (ms.find(node)==ms.end())){
+                ms.insert(ne);
+                ms.insert(node);
+                v.pb({ne,node});
+            }
+            
+            continue;
+        }
+        parent[ne]=node;
+        dfs(ne,node);
+    }
+}
+
+void pcycle(ll a,ll b){
+    //a - x- x -x -b -a//
+    cout<<a<<' ';
+    for(ll i = b;i!=a;i = parent[i]){
+        cout<<i<<" ";
+    }
+    cout<<a<<" ";
+    cout<<"\n";
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>CYCLESALLUNDIRECTED</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

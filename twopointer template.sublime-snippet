@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+//define head,tail
+    ll head = -1,tail=0,cnt0=0;
+    while(tail<n){
+        //move head as as far as u can
+        while(head+1<n and ((cnt0<k) or (cnt0<=k and v[head+1]))){
+            head++;
+            if(v[head]==0){
+                cnt0++;
+            }
+        }
+        //update the answer
+        ans = max(ans,head-tail+1);
+
+        //restore data structure,and update tail
+        if(head>=tail){
+            if(v[tail]==0){
+                cnt0--;
+            }
+            tail++;
+        }else{
+            tail++;
+            head = tail-1;
+        }
+    }
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>TWOPOINTER_TEMPLATE</tabTrigger>
+	Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

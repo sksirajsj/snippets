@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[
+//find number of subaraays with distinct char <=k
+//similiar fashion with map can be written to integers
+ll finddistinctsubarray(string s,ll k){
+    ll mp[26];
+    ll cntdis=0;
+    memset(mp,0,sizeof(mp));
+    ll head = -1,tail=0,ans=0, n =s.size();
+    while(tail<n){
+        while((head+1)<n and ((cntdis<k) or mp[s[head+1]-'a']>=1)){
+            head++;
+            if(mp[s[head]-'a']==0){
+                cntdis++;
+            }
+            mp[s[head]-'a']++;
+        }
+
+        ans+= (head-tail+1);
+
+        if(head>=tail){
+            mp[s[tail]-'a']--;
+            if(mp[s[tail]-'a']==0){
+                cntdis--;
+            }
+            tail++;
+        }else{
+            tail++;
+            head = tail-1;
+        }
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>TWOPOINTER_NO_OF_DISTICTSUBARRY_IN_STRING</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

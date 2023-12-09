@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+ll n;
+vector<ll> subs,v;
+
+//Recursive subset creation
+void rec(ll level,ll sum){
+    if(level==n){
+        //subset formed
+        debug(subs)
+        return;
+    }
+    subs.pb(v[level]);
+    rec(level+1,sum+v[level]);
+    subs.pop_back();
+    rec(level+1,sum);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>RECURSIVESUBSETCREATION</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

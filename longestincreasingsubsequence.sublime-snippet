@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+//Only gives Size of LIS
+ll lis(vector<ll> v){
+    vector<ll> temp;
+    for(auto i:v){
+        if(temp.empty() or temp.back()<i){
+            temp.pb(i);
+        }else{
+            auto it = lower_bound(all(temp),i);
+            *it = i;
+        }
+    }
+    return temp.size();
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>LONGESTINCREASINGSUBSEQUENCE</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

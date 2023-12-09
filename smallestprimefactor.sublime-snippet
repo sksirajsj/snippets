@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> spf(siz+1);
+void smallestPrimeFactor()
+{
+    for(ll i = 0;i <= siz;i++)
+        spf[i] = i;
+    for(ll i = 2;i <= siz;i++)
+    {
+        if(spf[i] == i)//i is prime
+        {
+            for(ll j = 2*i;j <= siz;j += i)
+            {
+                if(spf[j] == j)
+                    spf[j] = i;
+            }
+        }
+    }
+}
+
+map<ll,ll> primeFactorize(ll n)
+{
+    map<ll,ll> mp;
+    while(n>1)
+    {
+        mp[spf[n]]++;
+        n/=spf[n];
+    }
+    return mp;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>-SMALLESTPRIMEFACTOR</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

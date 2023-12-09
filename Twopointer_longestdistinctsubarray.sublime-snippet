@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+int longestUniqueSubsttr(string S){
+        int head = -1,tail=0,ans=0,n = S.size();
+        int arr[26];
+        for(int i=0;i<26;i++){
+            arr[i] = 0;
+        }
+        while(tail<n){
+            //move head as far as possible
+            while((head+1)<n and arr[S[head+1]-'a']==0){
+                head++;
+                arr[S[head]-'a'] = 1;
+            }
+            //update the answer
+            ans = max(ans,head-tail+1);
+            
+            //update tail
+            
+            if(head>=tail){
+                arr[S[tail]-'a'] = 0;
+                tail++;
+            }else{
+                tail++;
+                head = tail-1;
+            }
+        }
+        return ans;
+    }
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>TWOPOINTER_LongestDistinctSubarray</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

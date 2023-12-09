@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+//n is Set size
+//2^n is no of subsets
+vector<ll> getSetFromSubsetSums(vector<ll> v,ll n)
+{
+    multiset<ll> ms;
+    for(ll i=0;i<v.size();i++)
+    {
+        if(v[i]!=0)
+            ms.insert(v[i]);
+    }
+    vector<ll> ans,temp,subsetsums;
+
+    while(ans.size()!=n and !ms.empty())
+    {
+        temp.clear();
+        ll val = *(ms.begin());
+        ms.erase(ms.begin());
+        ans.pb(val);
+        for(ll i=0;i<subsetsums.size();i++)
+        {
+            ll sum = val+subsetsums[i];
+            ms.erase(ms.find(sum));
+            temp.pb(sum);
+        }
+        for(auto i:temp)
+            subsetsums.pb(i);
+        subsetsums.pb(val);
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>GETSETFROMSUBSETSUMS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

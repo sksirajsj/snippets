@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> sumofdiv(siz+1,1),numofdiv(siz+1,1);
+void divisorcnt()
+{
+    sumofdiv[0] = numofdiv[0] = 0;
+    for(ll i = 2;i <= siz;i++)
+    {
+        for(ll j = i;j<=siz;j+=i)
+        {
+            numofdiv[j]++;
+            sumofdiv[j]+=i;
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>DIVISORCNT</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
